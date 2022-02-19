@@ -17,7 +17,8 @@ static_assert( sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE );
 
 //helper for importing string into board type
 std::vector<std::string> split(const std::string &s, const char splitterChar){
-    std:vector<std::string> sol;
+    std::vector<int> temp;
+    std::vector<std::string> sol; //FIXME: wtf IS WRONG
     std::size_t lastSubstringSectionStartsAt = 0;
     for(std::size_t i = 0; i < s.size(); ++i){
         if(s[i] == splitterChar) {
