@@ -1,5 +1,5 @@
 # Sudoku
-##Objective
+## Objective
 A sudoku solver for a given sudoku problem
 
 ## Means
