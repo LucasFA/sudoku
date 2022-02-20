@@ -7,11 +7,13 @@
 #include<cmath>
 #include<memory>
 
+//TODO: put config in separate file, not in build
 //Config
 const unsigned short GRID_SIZE = 9; // ie, a 9x9 grid, with sqrt(9) = 3 sized boxes
 const std::string inputBoard = "030005086 000407300 010080400 090001000 000000027 700000108 805102000 074500001 100700030";
 //endConfig
 
+//FIXME: turn static_assert into assert (take into account GRID_SIZE won't  be available at compiel time)
 constexpr unsigned short sqrtGRID_SIZE = static_cast<const unsigned short>( std::round(std::sqrt(GRID_SIZE)) );
 static_assert( sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE );
 
@@ -32,6 +34,7 @@ std::vector<std::string> split(const std::string &s, const char splitterChar){
     return sol;
 }
 
+//TODO: modularise Board class into separate file
 class Board {
 	public:
         Board(const std::string &newBoard){
@@ -74,10 +77,9 @@ class Board {
         }
 
         bool updateNeighbours(std::size_t p, std::size_t q){
-            //TODO: iterator over the neighbourhood
-            // Reason: performance: eliminates a significant part of the repetition on the box - column/row overlap 
+            //TODO: performance improvement: iterator over the neighbourhood
+            // Reason: eliminates a significant part of the repetition on the box - column/row overlap 
             bool somethingChanged = false;
-            //iterates over neighbourhood
 
             if(board[p][q].getvalue() == 0) return;
             
@@ -109,6 +111,7 @@ class Board {
 // Not really a concern for small boards, but for GRID_SIZE = 100, 100*100 cells of size 100 (128) bits = 16 bytes is ~160 KB, potentially tanking performance
 };
 
+//TODO: modularise Cell class into separate file
 class Cell {
     public:
         Cell(unsigned short n = 0){
