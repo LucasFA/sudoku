@@ -2,15 +2,15 @@
 #define BOARD_H
 
 class Board {
-	public:
-        Board(const std::string &newBoard);
-        void solve();
+public:
+    Board(const std::string &newBoard);
+    void solve();
 
-	private:
-        std::array<std::array<Cell, GRID_SIZE>, GRID_SIZE> board;
-        
-        void solveInitialisation();
-        bool updateNeighbours(std::size_t p, std::size_t q);
+private:
+    std::array<std::array<Cell, GRID_SIZE>, GRID_SIZE> board;
+    
+    void solveInitialisation();
+    bool updateNeighbours(std::size_t p, std::size_t q);
 
 // NOTE: Board grows quadratically on input board size: GRID_SIZE*GRID_SIZE cells, the size of the input board, times each taking GRID_SIZE bits
 // quadratically on GRID_SIZE: linearly on the number of cells and the cells linearly themselves on GRID_SIZE
