@@ -1,7 +1,7 @@
 #include "Board.h"
 
 Board::Board(const std::string &newBoard){
-    const char space = " "[0];
+    const char space = ' ';
     std::vector<std::string> tempBoard(split(newBoard, space));
     
     assert(tempBoard.size() == GRID_SIZE);
