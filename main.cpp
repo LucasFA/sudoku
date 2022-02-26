@@ -16,7 +16,7 @@ const unsigned short GRID_SIZE = 9; // ie, a 9x9 grid, with sqrt(9) = 3 sized bo
 const std::string inputBoard = "030005086 000407300 010080400 090001000 000000027 700000108 805102000 074500001 100700030";
 //endConfig
 
-//FIXME: turn static_assert into assert (take into account GRID_SIZE won't  be available at compiel time)
+//FIXME: turn static_assert into assert (take into account GRID_SIZE won't  be available at compile time)
 constexpr unsigned short sqrtGRID_SIZE = static_cast<const unsigned short>( std::round(std::sqrt(GRID_SIZE)) );
 static_assert( sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE );
 
