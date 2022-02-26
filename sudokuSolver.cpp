@@ -7,6 +7,7 @@
 #include<cmath>
 #include<memory>
 
+#include "Cell.h"
 //TODO: put config in separate file, not in build
 //Config
 const unsigned short GRID_SIZE = 9; // ie, a 9x9 grid, with sqrt(9) = 3 sized boxes
@@ -111,72 +112,7 @@ class Board {
 // Not really a concern for small boards, but for GRID_SIZE = 100, 100*100 cells of size 100 (128) bits = 16 bytes is ~160 KB, potentially tanking performance
 };
 
-//TODO: modularise Cell class into separate file
-class Cell {
-    public:
-        Cell(unsigned short n = 0){
-            value = n;
-            if(value == 0) possibilities.set(); // 0 => all are possibilities 1,2,3,... 
-            else possibilities.reset();         // if we have a value we could get rid of the bitset.
-        }
-        bool isPossibility(int n){
-            assert(1 <= n && n <= GRID_SIZE);
-            return possibilities[n - 1];
-        }
-        void setPossibility(int n, bool val = false){
-            assert(1 <= n && n <= GRID_SIZE);
-            possibilities.set(n-1, val);
-        }
-        unsigned short getValue(){
-            return value;
-        }
-        void updateGivenNeighbouringCell(const Cell &other){
-            if (other.getValue() != 0){
-                this->setPossibility(other.getValue(), false);
-            }
-        }
-        char updateValue(){
-            if (value != 0){
-                return 0;
-            }
-            unsigned char counter = 0;
-            int positionOfSetBit = 0;
-            for (size_t i = 0; i < possibilities.size(); i++)
-            {
-                if( !possibilities[i]){
-                    counter++;
-                    positionOfSetBit = i;
-                }
-            }
-            if(counter > 1){
-                return 0;
-            }
-            if(counter == 0){
-                return -1;
-                // Incompatible setup
-            }
-            //success: counter == 1
-            value = positionOfSetBit + 1;
-            return 1;
-        }
 
-        void setNextPossibleValue(){
-            // FIXME: what's n
-            for (size_t i = n + 1; i <= GRID_SIZE; i++)
-            {
-                if(isPossibility(i)){
-                    value = i;
-                    break;
-                }
-            }
-            
-        }
-    private:
-        unsigned char value; //integer of 1 byte
-        std::bitset<GRID_SIZE> possibilities; 
-        // possibilities[i - 1] holds whether i is a possible value for the cell
-        //(only one value? => real value
-};
 
 int main() {
 	Board initialBoard(inputBoard);
