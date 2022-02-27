@@ -7,7 +7,7 @@ public:
     void solve();
 
 private:
-    //FIXME: turn this into a runtime-determined size, GRID_SIZE is.
+    //FIXME: turn this into a runtime-determined size, GRID_SIZE is. #1
     std::array<std::array<Cell, GRID_SIZE>, GRID_SIZE> board;
     
     void solveInitialisation();
