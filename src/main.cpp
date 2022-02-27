@@ -10,18 +10,15 @@
 #include "Cell.h"
 #include "Board.h"
 
-//TODO: put config in separate file, not in build #1
-//Config
-const unsigned short GRID_SIZE = 9; // ie, a 9x9 grid, with sqrt(9) = 3 sized boxes
-const std::string inputBoard = "030005086 000407300 010080400 090001000 000000027 700000108 805102000 074500001 100700030";
-//endConfig
-
-//FIXME: turn static_assert into assert (take into account GRID_SIZE won't  be available at compile time) #1
-constexpr unsigned short sqrtGRID_SIZE = static_cast<const unsigned short>( std::round(std::sqrt(GRID_SIZE)) );
-static_assert( sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE );
-
-
 int main() {
+	unsigned short temp;
+	std::cin >> temp;
+	const unsigned short GRID_SIZE = temp;
+	const unsigned short sqrtGRID_SIZE = std::round(std::sqrt(GRID_SIZE));
+	assert( sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE );
+	std::string inputBoard;
+	std::cin >> inputBoard;
+
 	Board initialBoard(inputBoard);
 	
 	return 0;
