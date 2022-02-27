@@ -13,6 +13,7 @@ private:
     //FIXME: turn this into a runtime-determined size, GRID_SIZE is. #1
     std::array<std::array<Cell, GRID_SIZE>, GRID_SIZE> board;
     
+    std::vector<std::string> Board::split(const std::string &s, const char splitterChar);
     void solveInitialisation();
     bool updateNeighbours(std::size_t p, std::size_t q);
 
