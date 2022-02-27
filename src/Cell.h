@@ -5,10 +5,10 @@ class Cell {
 public:
     Cell(std::uint8_t n = 0);
     
-    bool isPossibility(std::uint8_t n);
+    bool isPossibility(std::uint8_t n) const;
     void setPossibility(std::uint8_t n, bool val = false);
 
-    std::uint8_t getValue();
+    std::uint8_t getValue() const;
     void setValue(std::uint8_t n = 0);
     void updateGivenNeighbouringCell(const Cell &other);
 

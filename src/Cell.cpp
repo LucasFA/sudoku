@@ -9,7 +9,7 @@ Cell::Cell(std::uint8_t n = 0){
         this->possibilities.reset();         // if we have a value we could get rid of the bitset.
 }
 
-bool Cell::isPossibility(std::uint8_t n){
+bool Cell::isPossibility(std::uint8_t n) const {
     assert(1 <= n && n <= GRID_SIZE);
     return possibilities[n - 1];
 }
@@ -19,7 +19,7 @@ void Cell::setPossibility(std::uint8_t n, bool val = false){
     possibilities.set(n-1, val);
 }
 
-std::uint8_t Cell::getValue(){
+std::uint8_t Cell::getValue() const {
     return this->value;
 }
 void Cell::setValue(std::uint8_t n = 0){
