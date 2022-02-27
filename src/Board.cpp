@@ -1,10 +1,10 @@
 #include "Board.h"
 #include<vector>
 #include<cassert>
-Board::Board(const std::string &newBoard){
+Board::Board(const std::string &newBoard, unsigned short inpGS){
     const char space = ' ';
     std::vector<std::string> tempBoard(split(newBoard, space));
-    
+    this->GRID_SIZE = inpGS;
     assert(tempBoard.size() == GRID_SIZE);
 
     for(std::size_t i = 0; i < GRID_SIZE; ++i){
