@@ -11,15 +11,14 @@
 #include "Board.h"
 
 int main() {
-	unsigned short temp;
-	std::cin >> temp;
-	const unsigned short GRID_SIZE = temp;
-	const unsigned short sqrtGRID_SIZE = std::round(std::sqrt(GRID_SIZE));
-	assert( sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE );
+	unsigned short sudokuSize;
+	std::cin >> sudokuSize;
+	unsigned short sqrtGRID_SIZE = std::round(std::sqrt(sudokuSize));
+	assert( sqrtGRID_SIZE*sqrtGRID_SIZE == sudokuSize );
 	std::string inputBoard;
 	std::cin >> inputBoard;
 
-	Board initialBoard(inputBoard);
+	Board initialBoard(inputBoard, sudokuSize);
 	
 	return 0;
 }
