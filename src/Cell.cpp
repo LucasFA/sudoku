@@ -56,13 +56,10 @@ std::uint8_t Cell::updateValue(){
 }
 
 void Cell::setNextPossibleValue(){
-    // FIXME: what's n
-    for (unsigned int i = n + 1; i <= GRID_SIZE; i++)
-    {
+    for (unsigned int i = this->getValue() + 1; i <= GRID_SIZE; i++){
         if(isPossibility(i)){
             value = i;
             break;
         }
     }
-    
 }
