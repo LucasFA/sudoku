@@ -3,13 +3,13 @@
 #include<bitset>
 class Cell {
 public:
-    Cell(unsigned short n = 0);
+    Cell(std::uint8_t n = 0);
     
-    bool isPossibility(int n);
-    void setPossibility(int n, bool val = false);
+    bool isPossibility(std::uint8_t n);
+    void setPossibility(std::uint8_t n, bool val = false);
 
-    unsigned short getValue();
-
+    std::uint8_t getValue();
+    void setValue(std::uint8_t n = 0);
     void updateGivenNeighbouringCell(const Cell &other);
 
     std::uint8_t updateValue();

@@ -1,7 +1,7 @@
 #include "Cell.h"
 #include <cassert>
 #include <cstdint>
-Cell::Cell(unsigned short n = 0){
+Cell::Cell(std::uint8_t n = 0){
     value = n;
     if(value == 0) 
         this->possibilities.set(); // 0 => all are possibilities 1,2,3,... 
@@ -9,30 +9,33 @@ Cell::Cell(unsigned short n = 0){
         this->possibilities.reset();         // if we have a value we could get rid of the bitset.
 }
 
-bool Cell::isPossibility(int n){
+bool Cell::isPossibility(std::uint8_t n){
     assert(1 <= n && n <= GRID_SIZE);
     return possibilities[n - 1];
 }
 
-void Cell::setPossibility(int n, bool val = false){
+void Cell::setPossibility(std::uint8_t n, bool val = false){
     assert(1 <= n && n <= GRID_SIZE);
     possibilities.set(n-1, val);
 }
 
 std::uint8_t Cell::getValue(){
-    return value;
+    return this->value;
+}
+void Cell::setValue(std::uint8_t n = 0){
+    this->value = n;
 }
 void Cell::updateGivenNeighbouringCell(const Cell &other){
     if (other.getValue() != 0){
         this->setPossibility(other.getValue(), false);
     }
 }
-std::int8_t Cell::updateValue(){
+std::uint8_t Cell::updateValue(){
     if (value != 0){
         return 0;
     }
     std::uint8_t counter = 0;
-    int positionOfSetBit = 0;
+    std::uint8_t positionOfSetBit = 0;
     for (std::size_t i = 0; i < possibilities.size(); i++)
     {
         if( !possibilities[i]){
