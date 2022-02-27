@@ -1,5 +1,6 @@
 #include "Cell.h"
-
+#include <cassert>
+#include <cstdint>
 Cell::Cell(unsigned short n = 0){
     value = n;
     if(value == 0) possibilities.set(); // 0 => all are possibilities 1,2,3,... 
@@ -16,21 +17,21 @@ void Cell::setPossibility(int n, bool val = false){
     possibilities.set(n-1, val);
 }
 
-std::uint_8 Cell::getValue(){
+std::uint8_t Cell::getValue(){
     return value;
 }
-Cell::updateGivenNeighbouringCell(const Cell &other){
+void Cell::updateGivenNeighbouringCell(const Cell &other){
     if (other.getValue() != 0){
         this->setPossibility(other.getValue(), false);
     }
 }
-std::int_8 Cell::updateValue(){
+std::int8_t Cell::updateValue(){
     if (value != 0){
         return 0;
     }
-    std::uint_8 counter = 0;
+    std::uint8_t counter = 0;
     int positionOfSetBit = 0;
-    for (size_t i = 0; i < possibilities.size(); i++)
+    for (std::size_t i = 0; i < possibilities.size(); i++)
     {
         if( !possibilities[i]){
             counter++;
@@ -49,9 +50,9 @@ std::int_8 Cell::updateValue(){
     return 1;
 }
 
-Cell::setNextPossibleValue(){
+void Cell::setNextPossibleValue(){
     // FIXME: what's n
-    for (size_t i = n + 1; i <= GRID_SIZE; i++)
+    for (unsigned int i = n + 1; i <= GRID_SIZE; i++)
     {
         if(isPossibility(i)){
             value = i;
