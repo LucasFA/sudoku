@@ -64,11 +64,11 @@ bool Board::updateNeighbours(std::size_t p, std::size_t q){
     }
     
     // box
-    std::size_t startingXCoordinateOfBox = p - (p % sqrtGRID_SIZE);
-    std::size_t startingYCoordinateOfBox = q - (q % sqrtGRID_SIZE);
-    for (size_t i = startingYCoordinateOfBox; i < startingYCoordinateOfBox + sqrtGRID_SIZE; i++)
+    unsigned short startingXCoordinateOfBox = p - (p % sqrtGRID_SIZE);
+    unsigned short startingYCoordinateOfBox = q - (q % sqrtGRID_SIZE);
+    for (unsigned short i = startingYCoordinateOfBox; i < startingYCoordinateOfBox + sqrtGRID_SIZE; i++)
     {
-        for (size_t j = startingXCoordinateOfBox; j < startingXCoordinateOfBox + sqrtGRID_SIZE; j++)
+        for (unsigned short j = startingXCoordinateOfBox; j < startingXCoordinateOfBox + sqrtGRID_SIZE; j++)
         {
             board[i][j].updateGivenNeighbouringCell(board[p][q]);
         }
