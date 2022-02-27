@@ -11,12 +11,12 @@ bool Cell::isPossibility(int n){
     return possibilities[n - 1];
 }
 
-Cell::setPossibility(int n, bool val = false){
+void Cell::setPossibility(int n, bool val = false){
     assert(1 <= n && n <= GRID_SIZE);
     possibilities.set(n-1, val);
 }
 
-unsigned short Cell::getValue(){
+std::uint_8 Cell::getValue(){
     return value;
 }
 Cell::updateGivenNeighbouringCell(const Cell &other){
@@ -24,11 +24,11 @@ Cell::updateGivenNeighbouringCell(const Cell &other){
         this->setPossibility(other.getValue(), false);
     }
 }
-char Cell::updateValue(){
+std::int_8 Cell::updateValue(){
     if (value != 0){
         return 0;
     }
-    unsigned char counter = 0;
+    std::uint_8 counter = 0;
     int positionOfSetBit = 0;
     for (size_t i = 0; i < possibilities.size(); i++)
     {

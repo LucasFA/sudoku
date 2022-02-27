@@ -11,11 +11,11 @@ public:
 
     void updateGivenNeighbouringCell(const Cell &other);
 
-    char updateValue();
+    std::uint_8 updateValue();
 
     void setNextPossibleValue();
 private:
-    unsigned char value;
+    std::uint_8 value;
     std::bitset<GRID_SIZE> possibilities; 
     // possibilities[i - 1] holds whether i is a possible value for the cell
 };
