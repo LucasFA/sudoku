@@ -15,7 +15,7 @@ public:
 
     void setNextPossibleValue();
 private:
-    std::uint_8 value;
+    std::uint8_t value;
     std::bitset<GRID_SIZE> possibilities; 
     // possibilities[i - 1] holds whether i is a possible value for the cell
 };
