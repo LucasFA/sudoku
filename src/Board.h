@@ -1,6 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
-
+#include<string>
+#include<array>
 class Board {
 public:
     Board(const std::string &newBoard);

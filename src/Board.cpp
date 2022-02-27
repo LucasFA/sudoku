@@ -1,5 +1,6 @@
 #include "Board.h"
-
+#include<vector>
+#include<cassert>
 Board::Board(const std::string &newBoard){
     const char space = ' ';
     std::vector<std::string> tempBoard(split(newBoard, space));
@@ -14,7 +15,7 @@ Board::Board(const std::string &newBoard){
     }
 }
 
-Board::solve(){
+void Board::solve(){
     /*
     Apply deduction rules.
     Apply backtracking over possibilities.
@@ -23,7 +24,7 @@ Board::solve(){
     
 }
 
-Board::solveInitialisation(){
+void Board::solveInitialisation(){
     //Discovers impossibility values to depopulate in cells
     for (std::size_t i = 0; i < GRID_SIZE; i++)
     {
