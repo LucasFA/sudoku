@@ -30,17 +30,17 @@ void Board::solveInitialisation(){
     {
         for (std::size_t j = 0; j < GRID_SIZE; j++)
         {
-            updateLegalMovesOfCell(i, j);
+            // updateLegalMovesOfCell(i, j); // actually, just implement here
         }
     }
 }
 
-bool updateNeighbours(std::size_t p, std::size_t q){
+bool Board::updateNeighbours(std::size_t p, std::size_t q){
     //TODO: performance improvement: iterator over the neighbourhood
     // Reason: eliminates a significant part of the repetition on the box - column/row overlap 
     bool somethingChanged = false;
 
-    if(board[p][q].getvalue() == 0) return;
+    if(this->board[p][q].getValue() == 0) return;
     
     //row
     for(std::size_t j = 0; j < GRID_SIZE; ++j){

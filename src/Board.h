@@ -2,6 +2,8 @@
 #define BOARD_H
 #include<string>
 #include<array>
+#include "Cell.h"
+
 class Board {
 public:
     Board(const std::string &newBoard);
