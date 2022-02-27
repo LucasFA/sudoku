@@ -3,8 +3,10 @@
 #include <cstdint>
 Cell::Cell(unsigned short n = 0){
     value = n;
-    if(value == 0) possibilities.set(); // 0 => all are possibilities 1,2,3,... 
-    else possibilities.reset();         // if we have a value we could get rid of the bitset.
+    if(value == 0) 
+        this->possibilities.set(); // 0 => all are possibilities 1,2,3,... 
+    else 
+        this->possibilities.reset();         // if we have a value we could get rid of the bitset.
 }
 
 bool Cell::isPossibility(int n){

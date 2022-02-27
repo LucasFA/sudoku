@@ -11,7 +11,7 @@ public:
 
     void updateGivenNeighbouringCell(const Cell &other);
 
-    std::uint_8 updateValue();
+    std::uint8_t updateValue();
 
     void setNextPossibleValue();
 private:
