@@ -10,13 +10,13 @@ Cell::Cell(std::uint8_t n = 0){
 }
 
 bool Cell::isPossibility(std::uint8_t n) const {
-    assert(1 <= n && n <= GRID_SIZE);
+    assert(1 <= n && n <= possibilities.size());
     return possibilities[n - 1];
 }
 
 void Cell::setPossibility(std::uint8_t n, bool val = false){
-    assert(1 <= n && n <= GRID_SIZE);
-    possibilities.set(n-1, val);
+    assert(1 <= n && n <= possibilities.size());
+    possibilities[n-1] = val;
 }
 
 std::uint8_t Cell::getValue() const {
@@ -56,7 +56,7 @@ std::uint8_t Cell::updateValue(){
 }
 
 void Cell::setNextPossibleValue(){
-    for (unsigned int i = this->getValue() + 1; i <= GRID_SIZE; i++){
+    for (unsigned int i = this->getValue() + 1; i <= possibilities.size(); i++){
         if(isPossibility(i)){
             value = i;
             break;

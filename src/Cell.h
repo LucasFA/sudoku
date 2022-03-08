@@ -1,6 +1,6 @@
 #ifndef CELL_H
 #define CELL_H
-#include<bitset>
+#include<vector>
 class Cell {
 public:
     Cell(std::uint8_t n = 0);
@@ -17,7 +17,7 @@ public:
     void setNextPossibleValue();
 private:
     std::uint8_t value;
-    std::bitset<GRID_SIZE> possibilities; 
+    std::vector<bool> possibilities; 
     // possibilities[i - 1] holds whether i is a possible value for the cell
 };
 
