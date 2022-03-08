@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include<string>
-#include<array>
+#include<vector>
 #include "Cell.h"
 
 class Board {
@@ -12,7 +12,7 @@ public:
 private:
     unsigned short GRID_SIZE;
     unsigned short sqrtGRID_SIZE;
-    std::vector<std::vector<Cell> > board;
+    std::vector<std::vector<Cell>> board;
     std::vector<std::string> Board::split(const std::string &s, const char splitterChar);
     void solveInitialisation();
     bool updateNeighbours(std::size_t p, std::size_t q);
