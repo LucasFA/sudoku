@@ -1,25 +1,22 @@
-APPNAME := sudokuSolver
 
 CXX := g++-10
 CXXFLAGS := -Wall -std=c++20 -g
 
-SRC := main.cpp Board.cpp Cell.cpp
-OBJS := $(subst .cpp,.o,$(SRC))
-HEADERS := Board.h Cell.h
+SRC:=src
+OBJ:=obj
+SRCS := $(wildcard $(SRC)/*.cpp)
+OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o,$(SRCS))
 
-$(APPNAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(APPNAME) $(OBJS)
+BINDIR:=bin
+BIN := $(BINDIR)/main
 
-main.o: main.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c main.cpp
+all:$(BIN)
 
-# Style name.o: name.cpp name.h (.. compile) name.cpp
+$(BIN):$(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
-Board.o: Board.cpp Board.h
-	$(CXX) $(CXXFLAGS) -c Board.cpp
-Cell.o: Cell.cpp Cell.h
-	$(CXX) $(CXXFLAGS) -c Cell.cpp
-
+$(OBJ)/%.o: $(SRC)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o $(APPNAME)
+	rm -r $(BINDIR)/* $(OBJ)/*
