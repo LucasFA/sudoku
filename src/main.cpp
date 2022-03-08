@@ -1,11 +1,8 @@
 #include<iostream>
 #include<cassert>
-#include<vector>
 #include<cstdint>
-#include<bitset>
-#include<algorithm>
 #include<cmath>
-#include<memory>
+#include<string>
 
 #include "Cell.h"
 #include "Board.h"
@@ -18,7 +15,7 @@ int main() {
 	std::string inputBoard;
 	std::cin >> inputBoard;
 
-	Board initialBoard(inputBoard, sudokuSize);
+	Board Board(inputBoard, sudokuSize);
 	
 	return 0;
 }

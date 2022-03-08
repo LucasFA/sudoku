@@ -1,18 +1,18 @@
 #include "Board.h"
 #include<vector>
 #include<cassert>
-Board::Board(const std::string &newBoard, unsigned short inpGS){
-    const char space = ' ';
-    std::vector<std::string> tempBoard(split(newBoard, space));
-    this->GRID_SIZE = inpGS;
-    assert(tempBoard.size() == GRID_SIZE);
-
-    for(std::size_t i = 0; i < GRID_SIZE; ++i){
-        assert (tempBoard[i].size() == GRID_SIZE);
-        for(std::size_t j = 0; j < GRID_SIZE; ++j){
+Board::Board(const std::string &newBoard, unsigned short gridSize){
+    std::vector<std::string> tempBoard(split(newBoard, ' '));
+    assert(tempBoard.size() == gridSize);
+    std::vector<std::vector<Cell>> board(gridSize);
+    for(std::size_t i = 0; i < gridSize; ++i){
+        board[i].resize(gridSize);
+        board[i].shrink_to_fit();
+        for(std::size_t j = 0; j < gridSize; ++j){
             board[i][j].setValue(static_cast<int>(tempBoard[i][j]));
         }
     }
+    board.shrink_to_fit();
 }
 
 //helper for importing string into board type
@@ -42,10 +42,8 @@ void Board::solve(){
 
 void Board::solveInitialisation(){
     //Discovers impossibility values to depopulate in cells
-    for (std::size_t i = 0; i < GRID_SIZE; i++)
-    {
-        for (std::size_t j = 0; j < GRID_SIZE; j++)
-        {
+    for (std::size_t i = 0; i < GRID_SIZE; i++){
+        for (std::size_t j = 0; j < GRID_SIZE; j++){
             // updateLegalMovesOfCell(i, j); // actually, just implement here
         }
     }
