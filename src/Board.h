@@ -6,7 +6,7 @@
 
 class Board {
 public:
-    Board(const std::string &, unsigned short);
+    Board(const std::string &newBoard, unsigned short inputGridSize);
     void solve();
 
 private:
