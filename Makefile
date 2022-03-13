@@ -2,6 +2,9 @@
 CXX:=g++-10
 CXXFLAGS:=-Wall -std=c++20 -g
 
+RM:=trash-put
+RMFLAGS:=
+
 SRC:=src
 OBJ:=obj
 SRCS := $(wildcard $(SRC)/*.cpp)
@@ -25,4 +28,4 @@ obj/Cell.o: src/Cell.cpp src/Cell.h
 	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
 clean:
-	rm -r $(BINDIR)/* $(OBJ)/*
+	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJ)/*
