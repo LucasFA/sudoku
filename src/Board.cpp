@@ -22,7 +22,7 @@ Board::Board(const std::string &newBoard){
 }
 
 //helper for importing string into board type
-std::vector<std::string> Board::split(const std::string &s, const char splitterChar){
+std::vector<std::string> Board::split(const std::string &s, char splitterChar){
     std::vector<std::string> sol;
     std::size_t lastSubstringSectionStartsAt = 0;
     for(std::size_t i = 0; i < s.size(); ++i){
@@ -58,9 +58,11 @@ void Board::solveInitialisation(){
 bool Board::updateNeighbours(std::size_t p, std::size_t q){
     //TODO: performance improvement: iterator over the neighbourhood
     // Reason: eliminates a significant part of the repetition on the box - column/row overlap 
+    // TODO: actually return value somethingCHanged
     bool somethingChanged = false;
 
-    if(this->board[p][q].getValue() == 0) return;
+    // Necessary check?
+    if(this->board[p][q].getValue() == 0) return somethingChanged;
     
     //row
     for(std::size_t j = 0; j < GRID_SIZE; ++j){
