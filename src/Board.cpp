@@ -12,7 +12,7 @@ Board::Board(const std::string &newBoard){
         assert (tempBoard[i].size() == GRID_SIZE);
 
         for(std::size_t j = 0; j < GRID_SIZE; ++j){
-            std::uint8_t temp = tempBoard[i][j];
+            std::uint8_t temp = tempBoard[i][j] - '0';
             assert(0 <=temp && temp <= GRID_SIZE);
             board[i][j].init(temp);
         }
