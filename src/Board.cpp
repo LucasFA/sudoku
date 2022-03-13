@@ -84,4 +84,5 @@ bool Board::updateNeighbours(std::size_t p, std::size_t q){
     {
         board[i][q].setPossibility(board[p][q].getValue(), false);
     }
+    return somethingChanged;
 }
