@@ -1,6 +1,7 @@
 #include "Board.h"
 #include<vector>
 #include<cassert>
+#include<cmath>
 
 Board::Board(const std::string &newBoard){
     std::vector<std::string> tempBoard(split(newBoard, ' '));
@@ -63,6 +64,9 @@ bool Board::updateNeighbours(std::size_t p, std::size_t q){
     }
     
     // box
+    const std::uint8_t sqrtGRID_SIZE = std::round(std::sqrt(GRID_SIZE));
+    assert(sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE);
+
     unsigned short startingXCoordinateOfBox = p - (p % sqrtGRID_SIZE);
     unsigned short startingYCoordinateOfBox = q - (q % sqrtGRID_SIZE);
     for (unsigned short i = startingYCoordinateOfBox; i < startingYCoordinateOfBox + sqrtGRID_SIZE; i++)
