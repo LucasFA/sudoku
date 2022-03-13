@@ -1,14 +1,15 @@
 #include "Board.h"
 #include<vector>
 #include<cassert>
-Board::Board(const std::string &newBoard, unsigned short gridSize){
-    std::vector<std::string> tempBoard(split(newBoard, ' '));
-    assert(tempBoard.size() == gridSize);
-    std::vector<std::vector<Cell>> board(gridSize);
-    for(std::size_t i = 0; i < gridSize; ++i){
-        board[i].resize(gridSize);
-        board[i].shrink_to_fit();
-        for(std::size_t j = 0; j < gridSize; ++j){
+Board::Board(const std::string &newBoard){
+    const char space = ' ';
+    std::vector<std::string> tempBoard(split(newBoard, space));
+    
+    assert(tempBoard.size() == GRID_SIZE);
+
+    for(std::size_t i = 0; i < GRID_SIZE; ++i){
+        assert (tempBoard[i].size() == GRID_SIZE);
+        for(std::size_t j = 0; j < GRID_SIZE; ++j){
             board[i][j].setValue(static_cast<int>(tempBoard[i][j]));
         }
     }
