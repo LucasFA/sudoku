@@ -2,6 +2,7 @@
 #include<string>
 
 #include "Board.h"
+#include "config.h"
 
 int main() {
 	std::string inputBoard;

@@ -2,6 +2,7 @@
 #define CELL_H
 
 #include<bitset>
+#include "config.h"
 
 class Cell {
 public:

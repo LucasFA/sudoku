@@ -4,6 +4,7 @@
 #include<string>
 #include<array>
 #include "Cell.h"
+#include "config.h"
 
 class Board {
 public:
