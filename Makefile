@@ -18,14 +18,19 @@ all:$(BIN)
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-obj/main.o: src/main.cpp
+$(OBJ)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-obj/Board.o: src/Board.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# That does the same as:
 
-obj/Cell.o: src/Cell.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# obj/main.o: src/main.cpp
+# 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# obj/Board.o: src/Board.cpp
+# 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# obj/Cell.o: src/Cell.cpp
+# 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJ)/*
