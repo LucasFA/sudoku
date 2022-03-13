@@ -2,8 +2,7 @@
 #include<vector>
 #include<cassert>
 Board::Board(const std::string &newBoard){
-    const char space = ' ';
-    std::vector<std::string> tempBoard(split(newBoard, space));
+    std::vector<std::string> tempBoard(split(newBoard, ' '));
     
     assert(tempBoard.size() == GRID_SIZE);
 
