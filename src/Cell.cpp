@@ -2,7 +2,7 @@
 #include <cassert>
 #include <cstdint>
 
-Cell::Cell(std::uint8_t n = 0){
+Cell::Cell(std::uint8_t n){
     value = n;
     if(value == 0) 
         this->possibilities.set(); // 0 => all are possibilities 1,2,3,... 
@@ -21,7 +21,7 @@ bool Cell::isPossibility(std::uint8_t n) const {
     return possibilities[n - 1];
 }
 
-void Cell::setPossibility(std::uint8_t n, bool val = false){
+void Cell::setPossibility(std::uint8_t n, bool val){
     assert(1 <= n && n <= GRID_SIZE);
     possibilities.set(n-1, val);
 }
