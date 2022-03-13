@@ -2,7 +2,7 @@
 CXX:=g++-10
 CXXFLAGS:=-Wall -std=c++20 -g
 
-RM:=trash-put
+RM:=rm
 RMFLAGS:=
 
 SRC:=src
@@ -32,5 +32,6 @@ $(OBJ)/%.o: $(SRC)/%.cpp
 # obj/Cell.o: src/Cell.cpp
 # 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# If you change this, make a test run with RM := trash-put
 clean:
 	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJ)/*
