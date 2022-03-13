@@ -66,7 +66,7 @@ bool Board::updateNeighbours(std::size_t p, std::size_t q){
     
     //row
     for(std::size_t j = 0; j < GRID_SIZE; ++j){
-        board[p][j].updateGivenNeighbouringCell(board[p][q]);
+        board[p][j].setPossibility(board[p][q].getValue(), false);
     }
     
     // box
@@ -76,12 +76,12 @@ bool Board::updateNeighbours(std::size_t p, std::size_t q){
     {
         for (unsigned short j = startingXCoordinateOfBox; j < startingXCoordinateOfBox + SQRT_GRID_SIZE; j++)
         {
-            board[i][j].updateGivenNeighbouringCell(board[p][q]);
+            board[i][j].setPossibility(board[p][q].getValue(), false);
         }
     }
     //column
     for (std::size_t i = 0; i < GRID_SIZE; i++)
     {
-        board[i][q].updateGivenNeighbouringCell(board[p][q]);
+        board[i][q].setPossibility(board[p][q].getValue(), false);
     }
 }
