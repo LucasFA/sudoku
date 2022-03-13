@@ -8,14 +8,10 @@
 #include "Board.h"
 
 int main() {
-	unsigned short sudokuSize;
-	std::cin >> sudokuSize;
-	unsigned short sqrtGRID_SIZE = std::round(std::sqrt(sudokuSize));
-	assert( sqrtGRID_SIZE*sqrtGRID_SIZE == sudokuSize );
 	std::string inputBoard;
 	std::cin >> inputBoard;
 
-	Board Board(inputBoard, sudokuSize);
+	Board board(inputBoard);
 	
 	return 0;
 }
