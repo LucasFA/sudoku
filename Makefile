@@ -18,13 +18,13 @@ all:$(BIN)
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-obj/main.o: src/main.cpp src/Board.h src/config.h
+obj/main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-obj/Board.o: src/Board.cpp src/Board.h
+obj/Board.o: src/Board.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-obj/Cell.o: src/Cell.cpp src/Cell.h
+obj/Cell.o: src/Cell.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
