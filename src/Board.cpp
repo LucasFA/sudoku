@@ -14,7 +14,7 @@ Board::Board(const std::string &newBoard){
         for(std::size_t j = 0; j < GRID_SIZE; ++j){
             std::uint8_t temp = tempBoard[i][j];
             assert(0 <=temp && temp <= GRID_SIZE);
-            board[i][j].setValue(temp);
+            board[i][j].init(temp);
         }
     }
     SQRT_GRID_SIZE = std::round(std::sqrt(GRID_SIZE));

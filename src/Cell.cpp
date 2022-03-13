@@ -6,8 +6,14 @@ Cell::Cell(std::uint8_t n = 0){
     value = n;
     if(value == 0) 
         this->possibilities.set(); // 0 => all are possibilities 1,2,3,... 
-    else 
-        this->possibilities.reset();         // if we have a value we could get rid of the bitset.
+    
+    // if we have a value we can forget the bitset.
+}
+
+void Cell::init(std::uint8_t n){
+    value = n;
+    if (value == 0)
+        possibilities.set();
 }
 
 bool Cell::isPossibility(std::uint8_t n) const {
