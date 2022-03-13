@@ -13,7 +13,11 @@ OBJS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
 BINDIR:=bin
 BIN := $(BINDIR)/main.out
 
-.PHONY: clean prep
+.PHONY: clean prep run
+
+run: $(BIN)
+	./$(BIN)
+
 all:$(BIN)
 
 $(BIN): $(OBJS)
