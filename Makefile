@@ -5,10 +5,10 @@ CXXFLAGS:=-Wall -std=c++20 -g
 RM:=rm
 RMFLAGS:=
 
-SRC:=src
-OBJ:=obj
-SRCS := $(wildcard $(SRC)/*.cpp)
-OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
+SRCDIR:=src
+OBJDIR:=obj
+SRCS := $(wildcard $(SRCDIR)/*.cpp)
+OBJS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
 
 BINDIR:=bin
 BIN := $(BINDIR)/main.out
@@ -21,7 +21,7 @@ $(BIN): $(OBJS)
 
 prep: $(OBJS)
 
-$(OBJ)/%.o: $(SRC)/%.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # That does the same as:
@@ -37,4 +37,4 @@ $(OBJ)/%.o: $(SRC)/%.cpp
 
 # If you change this, make a test run with RM := trash-put
 clean:
-	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJ)/*
+	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJDIR)/*
