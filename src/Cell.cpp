@@ -24,7 +24,7 @@ std::uint8_t Cell::getValue() const {
     return this->value;
 }
 
-void Cell::setValue(std::uint8_t n = 0){
+void Cell::setValue(std::uint8_t n){
     this->value = n;
 }
 
