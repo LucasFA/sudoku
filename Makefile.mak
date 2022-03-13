@@ -1,6 +1,6 @@
 
-CXX := g++-10
-CXXFLAGS := -Wall -std=c++20 -g
+CXX:=g++-10
+CXXFLAGS:=-Wall -std=c++20 -g
 
 SRC:=src
 OBJ:=obj
