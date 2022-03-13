@@ -5,10 +5,8 @@
 #include "config.h"
 
 int main() {
-	std::string inputBoard;
-	std::cin >> inputBoard;
 
-	Board board(inputBoard);
+	Board board(inputBoard); // defined in config.h
 	
 	return 0;
 }
