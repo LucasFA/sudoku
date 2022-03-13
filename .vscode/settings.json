@@ -3,6 +3,7 @@
         "*.rmd": "markdown",
         "*.tcc": "cpp",
         "deque": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp"
     }
 }
