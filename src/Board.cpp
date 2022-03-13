@@ -42,11 +42,11 @@ void Board::solve(){
     Apply deduction rules.
     Apply backtracking over possibilities.
     */
-    solveInitialisation();
+    updateAll();
     
 }
 
-void Board::solveInitialisation(){
+void Board::updateAll(){
     //Discovers impossibility values to depopulate in cells
     for (std::uint8_t i = 0; i < GRID_SIZE; i++){
         for (std::uint8_t j = 0; j < GRID_SIZE; j++){
