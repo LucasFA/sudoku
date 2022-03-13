@@ -13,10 +13,13 @@ OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
 BINDIR:=bin
 BIN := $(BINDIR)/main.out
 
+.PHONY: clean prep
 all:$(BIN)
 
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
+
+prep: $(OBJS)
 
 $(OBJ)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
