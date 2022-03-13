@@ -1,6 +1,7 @@
 #include "Cell.h"
 #include <cassert>
 #include <cstdint>
+
 Cell::Cell(std::uint8_t n = 0){
     value = n;
     if(value == 0) 
@@ -30,6 +31,7 @@ void Cell::updateGivenNeighbouringCell(const Cell &other){
         this->setPossibility(other.getValue(), false);
     }
 }
+
 std::uint8_t Cell::updateValue(){
     if (value != 0){
         return 0;
@@ -43,6 +45,7 @@ std::uint8_t Cell::updateValue(){
             positionOfSetBit = i;
         }
     }
+    
     if(counter > 1){
         return 0;
     }

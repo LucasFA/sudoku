@@ -1,6 +1,8 @@
 #ifndef CELL_H
 #define CELL_H
+
 #include<bitset>
+
 class Cell {
 public:
     Cell(std::uint8_t n = 0);

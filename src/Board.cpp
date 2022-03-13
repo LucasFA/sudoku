@@ -1,6 +1,7 @@
 #include "Board.h"
 #include<vector>
 #include<cassert>
+
 Board::Board(const std::string &newBoard){
     std::vector<std::string> tempBoard(split(newBoard, ' '));
     
