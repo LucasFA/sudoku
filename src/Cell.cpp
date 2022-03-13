@@ -23,9 +23,11 @@ void Cell::setPossibility(std::uint8_t n, bool val = false){
 std::uint8_t Cell::getValue() const {
     return this->value;
 }
+
 void Cell::setValue(std::uint8_t n = 0){
     this->value = n;
 }
+
 void Cell::updateGivenNeighbouringCell(const Cell &other){
     if (other.getValue() != 0){
         this->setPossibility(other.getValue(), false);
