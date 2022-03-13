@@ -48,9 +48,9 @@ void Board::solve(){
 
 void Board::solveInitialisation(){
     //Discovers impossibility values to depopulate in cells
-    for (std::size_t i = 0; i < GRID_SIZE; i++){
-        for (std::size_t j = 0; j < GRID_SIZE; j++){
-            // updateLegalMovesOfCell(i, j); // actually, just implement here
+    for (std::uint8_t i = 0; i < GRID_SIZE; i++){
+        for (std::uint8_t j = 0; j < GRID_SIZE; j++){
+            updateNeighbours(i, j);
         }
     }
 }
