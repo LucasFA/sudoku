@@ -10,11 +10,15 @@ Board::Board(const std::string &newBoard){
 
     for(std::size_t i = 0; i < GRID_SIZE; ++i){
         assert (tempBoard[i].size() == GRID_SIZE);
+
         for(std::size_t j = 0; j < GRID_SIZE; ++j){
-            board[i][j].setValue(static_cast<int>(tempBoard[i][j]));
+            std::uint8_t temp = tempBoard[i][j];
+            assert(0 <=temp && temp <= GRID_SIZE);
+            board[i][j].setValue(temp);
         }
     }
-    board.shrink_to_fit();
+    SQRT_GRID_SIZE = std::round(std::sqrt(GRID_SIZE));
+    assert(SQRT_GRID_SIZE*SQRT_GRID_SIZE == GRID_SIZE);
 }
 
 //helper for importing string into board type
@@ -64,14 +68,11 @@ bool Board::updateNeighbours(std::size_t p, std::size_t q){
     }
     
     // box
-    const std::uint8_t sqrtGRID_SIZE = std::round(std::sqrt(GRID_SIZE));
-    assert(sqrtGRID_SIZE*sqrtGRID_SIZE == GRID_SIZE);
-
-    unsigned short startingXCoordinateOfBox = p - (p % sqrtGRID_SIZE);
-    unsigned short startingYCoordinateOfBox = q - (q % sqrtGRID_SIZE);
-    for (unsigned short i = startingYCoordinateOfBox; i < startingYCoordinateOfBox + sqrtGRID_SIZE; i++)
+    unsigned short startingXCoordinateOfBox = p - (p % SQRT_GRID_SIZE);
+    unsigned short startingYCoordinateOfBox = q - (q % SQRT_GRID_SIZE);
+    for (unsigned short i = startingYCoordinateOfBox; i < startingYCoordinateOfBox + SQRT_GRID_SIZE; i++)
     {
-        for (unsigned short j = startingXCoordinateOfBox; j < startingXCoordinateOfBox + sqrtGRID_SIZE; j++)
+        for (unsigned short j = startingXCoordinateOfBox; j < startingXCoordinateOfBox + SQRT_GRID_SIZE; j++)
         {
             board[i][j].updateGivenNeighbouringCell(board[p][q]);
         }

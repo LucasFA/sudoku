@@ -13,7 +13,8 @@ public:
 
 private:
     std::array<std::array<Cell, GRID_SIZE>, GRID_SIZE> board;
-    
+
+    std::uint8_t SQRT_GRID_SIZE;
     std::vector<std::string> Board::split(const std::string &s, const char splitterChar);
     void solveInitialisation();
     bool updateNeighbours(std::size_t p, std::size_t q);
