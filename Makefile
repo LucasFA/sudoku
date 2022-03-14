@@ -13,7 +13,9 @@ OBJS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
 # Localización del programa final
 BINDIR:=bin
 BIN := $(BINDIR)/main.out
+
 # ────────────────────────────────────────────────────────────────────────────────
+
 .PHONY: clean run
 
 all:$(BIN)
@@ -21,7 +23,11 @@ all:$(BIN)
 run: all
 	./$(BIN)
 
+clean:
+	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJDIR)/*
+
 # ────────────────────────────────────────────────────────────────────────────────
+
 # Linkeo
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
@@ -34,6 +40,3 @@ DEPENDS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.d, $(SRCS))
 # Crea los objetos compilados %.o y el archivo %.d de sus dependencias
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp Makefile
 	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
-
-clean:
-	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJDIR)/*
