@@ -10,7 +10,7 @@ public:
     void init(std::uint8_t val = 0);
 
     bool isPossibility(std::uint8_t n) const;
-    void setPossibility(std::uint8_t n, bool val = false);
+    bool setPossibility(std::uint8_t n, bool val = false);
     void updateGivenNeighbouringCell(const Cell &other);
 
     std::uint8_t getValue() const;

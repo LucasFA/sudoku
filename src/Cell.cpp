@@ -21,9 +21,11 @@ bool Cell::isPossibility(std::uint8_t n) const {
     return possibilities[n - 1];
 }
 
-void Cell::setPossibility(std::uint8_t n, bool val){
+bool Cell::setPossibility(std::uint8_t n, bool val){
     assert(1 <= n && n <= GRID_SIZE);
+    bool changed = possibilities[n-1] == n;
     possibilities.set(n-1, val);
+    return changed;
 }
 
 std::uint8_t Cell::getValue() const {
@@ -34,6 +36,7 @@ void Cell::setValue(std::uint8_t n){
     this->value = n;
 }
 
+//TODO: delete?
 void Cell::updateGivenNeighbouringCell(const Cell &other){
     if (other.getValue() != 0){
         this->setPossibility(other.getValue(), false);
