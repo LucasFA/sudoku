@@ -15,18 +15,24 @@ BIN := $(BINDIR)/main.out
 
 .PHONY: clean prep run
 
-run: $(BIN)
+all:$(BIN)
+
+run: all
 	./$(BIN)
 
-all:$(BIN)
 
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 prep: $(OBJS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+DEPENDS := $(patsubst $(SRCDIR)%.cpp, $(OBJDIR)%.d, $(SRCS))
+
+-include $(DEPENDS) # executes all those: main.d, Cell.d, Board.d makefiles, if they exist
+
+# creates all those dependency files execute in the include $(DEPENDS)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp Makefile
+	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
 # That does the same as:
 
