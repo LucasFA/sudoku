@@ -26,7 +26,7 @@ $(BIN): $(OBJS)
 
 prep: $(OBJS)
 
-DEPENDS := $(patsubst $(SRCDIR)%.cpp, $(OBJDIR)%.d, $(SRCS))
+DEPENDS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.d, $(SRCS))
 
 -include $(DEPENDS) # executes all those: main.d, Cell.d, Board.d makefiles, if they exist
 
