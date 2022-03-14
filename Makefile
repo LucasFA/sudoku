@@ -1,50 +1,39 @@
-
+# Opciones de compilador
 CXX:=g++-10
 CXXFLAGS:=-Wall -std=c++20 -g
-
+# Opciones de borrado
 RM:=rm
 RMFLAGS:=
-
+# Localización del código fuente y su lista
 SRCDIR:=src
-OBJDIR:=obj
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
+# Localización de objetos compilados pre-linkeo
+OBJDIR:=obj
 OBJS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
-
+# Localización del programa final
 BINDIR:=bin
 BIN := $(BINDIR)/main.out
-
-.PHONY: clean prep run
+# ────────────────────────────────────────────────────────────────────────────────
+.PHONY: clean run
 
 all:$(BIN)
 
 run: all
 	./$(BIN)
 
-
+# ────────────────────────────────────────────────────────────────────────────────
+# Linkeo
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-prep: $(OBJS)
-
+# Crea la lista de dependencias para cada archivo .o
 DEPENDS := $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.d, $(SRCS))
+# Añade todas esas dependencias como reglas. No avisa si no existen.
+-include $(DEPENDS) 
 
--include $(DEPENDS) # executes all those: main.d, Cell.d, Board.d makefiles, if they exist
-
-# creates all those dependency files execute in the include $(DEPENDS)
+# Crea los objetos compilados %.o y el archivo %.d de sus dependencias
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp Makefile
 	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
-# That does the same as:
-
-# obj/main.o: src/main.cpp
-# 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# obj/Board.o: src/Board.cpp
-# 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# obj/Cell.o: src/Cell.cpp
-# 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# If you change this, make a test run with RM := trash-put
 clean:
 	$(RM) $(RMFLAGS) $(BINDIR)/* $(OBJDIR)/*
