@@ -1,10 +1,12 @@
 #include "Board.hpp"
+#include "auxiliaryFunctions.hpp"
+
 #include <vector>
 #include <cassert>
 #include <cmath>
 
 Board::Board(const std::string &newBoard){
-    std::vector<std::string> tempBoard(split(newBoard, ' '));
+    std::vector<std::string> tempBoard( aux_functions::split(newBoard, ' ') );
     
     assert(tempBoard.size() == GRID_SIZE);
 
@@ -21,21 +23,6 @@ Board::Board(const std::string &newBoard){
     assert(SQRT_GRID_SIZE*SQRT_GRID_SIZE == GRID_SIZE);
 }
 
-//helper for importing string into board type
-std::vector<std::string> Board::split(const std::string &s, char splitterChar){
-    std::vector<std::string> sol;
-    std::size_t lastSubstringSectionStartsAt = 0;
-    for(std::size_t i = 0; i < s.size(); ++i){
-        if(s[i] == splitterChar) {
-            sol.push_back(s.substr(lastSubstringSectionStartsAt, i - lastSubstringSectionStartsAt));
-            lastSubstringSectionStartsAt = i + 1;
-        }
-    }
-    std::string temp = s.substr(lastSubstringSectionStartsAt, s.size() - lastSubstringSectionStartsAt);
-    if (!temp.empty()) 
-        sol.push_back(temp);
-    return sol;
-}
 
 void Board::solve(){
     /*
