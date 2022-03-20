@@ -1,6 +1,5 @@
-#include "Cell.h"
-#include <cassert>
-#include <cstdint>
+#include "Cell.hpp"
+#include<cassert>
 
 Cell::Cell(std::uint8_t n){
     value = n;

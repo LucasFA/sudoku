@@ -4,7 +4,7 @@
 #include<string>
 #include<array>
 #include<vector>
-#include "Cell.h"
+#include "Cell.hpp"
 #include "config.h"
 
 class Board {
