@@ -1,9 +1,9 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include<string>
-#include<array>
-#include<vector>
+#include <string>
+#include <array>
+#include <vector>
 #include "Cell.hpp"
 #include "config.h"
 
